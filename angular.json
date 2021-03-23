@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "root": "",
@@ -28,7 +28,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss",
+              "node_modules/bpmn-js/dist/assets/diagram-js.css",
+              "node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css",
+              "node_modules/bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css"
             ],
             "scripts": []
           },
@@ -93,7 +96,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss",
+              "node_modules/bpmn-js/dist/assets/diagram-js.css",
+              "node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css",
+              "node_modules/bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css"
             ],
             "scripts": []
           }
