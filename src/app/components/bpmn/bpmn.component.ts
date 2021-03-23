@@ -13,7 +13,7 @@ import propertiesProvider from 'bpmn-js-properties-panel/lib/provider/bpmn';
 })
 export class BpmnComponent implements OnInit {
 
-  private modeler;
+  private modeler: BpmnModeler;
 
   private readonly newDiagram = 'assets/bpmn/init.bpmn';
 
@@ -24,25 +24,25 @@ export class BpmnComponent implements OnInit {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.initBpmn();
+    this.initModeler();
   }
 
-  initBpmn() {
+  initModeler() {
     this.modeler = new BpmnModeler({
-      container: '#js-canvas',
+      container: '#canvas',
       propertiesPanel: {
-        parent: '#js-properties-panel'
+        parent: '#properties-panel'
       },
       additionalModules: [
         propertiesProvider,
         propertiesPanelModule
       ]
     });
-    this.createDiagram();
+    this.initDiagram();
   }
 
-  createDiagram() {
-    this.importDiagram(this.newDiagram);
+  initDiagram() {
+    this.load(this.newDiagram);
   }
 
   handleError(err: any) {
@@ -51,11 +51,12 @@ export class BpmnComponent implements OnInit {
     }
   }
 
-  importDiagram(xml) {
+  load(xml) {
     this.http.get(xml, {
       headers: { observe: 'response' }, responseType: 'text'
     }).subscribe(
       (x: any) => {
+        // console.log('Fetched XML, now importing: ', x);
         this.modeler.importXML(x, this.handleError);
       },
       this.handleError
@@ -96,3 +97,5 @@ export class BpmnComponent implements OnInit {
 
 
 }
+
+
