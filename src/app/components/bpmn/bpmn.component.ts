@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
-import propertiesPanelModule from 'bpmn-js-properties-panel';
-import propertiesProvider from 'bpmn-js-properties-panel/lib/provider/bpmn';
+import PropertiesPanel from 'bpmn-js-properties-panel';
+import BpmnPropertiesProvider from 'bpmn-js-properties-panel/lib/provider/bpmn';
+import customTranslate from './i18n/translate';
+
+
 
 
 @Component({
@@ -21,6 +24,10 @@ export class BpmnComponent implements OnInit {
 
   public saveName = '';
 
+  public customTranslateModule = {
+    translate: ['value', customTranslate]
+  };
+
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
@@ -34,8 +41,9 @@ export class BpmnComponent implements OnInit {
         parent: '#properties-panel'
       },
       additionalModules: [
-        propertiesProvider,
-        propertiesPanelModule
+        PropertiesPanel,
+        BpmnPropertiesProvider,
+        this.customTranslateModule
       ]
     });
     this.initDiagram();
