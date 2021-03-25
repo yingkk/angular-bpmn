@@ -3,7 +3,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 import PropertiesPanel from 'bpmn-js-properties-panel';
-import BpmnPropertiesProvider from 'bpmn-js-properties-panel/lib/provider/bpmn';
+
+// import BpmnPropertiesProvider from 'bpmn-js-properties-panel/lib/provider/bpmn';
+import CamundaPropertiesProvider from 'bpmn-js-properties-panel/lib/provider/camunda';
+import { CamundaModdleDescriptor } from './camunda/camunda';
 import customTranslate from './i18n/translate';
 
 
@@ -42,9 +45,14 @@ export class BpmnComponent implements OnInit {
       },
       additionalModules: [
         PropertiesPanel,
-        BpmnPropertiesProvider,
+        CamundaPropertiesProvider,
+        // BpmnPropertiesProvider,
         this.customTranslateModule
-      ]
+      ],
+      moddleExtensions: {
+        //如果要在属性面板中维护camunda：XXX属性，则需要此
+        camunda: CamundaModdleDescriptor
+      }
     });
     this.initDiagram();
   }

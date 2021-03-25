@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.14",
     "bpmn-js": "^8.2.2",
     "bpmn-js-properties-panel": "^0.41.0",
+    "camunda-bpmn-moddle": "^5.0.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
