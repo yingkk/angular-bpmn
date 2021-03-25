@@ -6,10 +6,8 @@ import PropertiesPanel from 'bpmn-js-properties-panel';
 
 // import BpmnPropertiesProvider from 'bpmn-js-properties-panel/lib/provider/bpmn';
 import CamundaPropertiesProvider from 'bpmn-js-properties-panel/lib/provider/camunda';
-import { CamundaModdleDescriptor } from './camunda/camunda';
+import * as CamundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda.json';
 import customTranslate from './i18n/translate';
-
-
 
 
 @Component({
@@ -50,7 +48,7 @@ export class BpmnComponent implements OnInit {
         this.customTranslateModule
       ],
       moddleExtensions: {
-        //如果要在属性面板中维护camunda：XXX属性，则需要此
+        // 如果要在属性面板中维护camunda：XXX属性，
         camunda: CamundaModdleDescriptor
       }
     });
@@ -84,6 +82,7 @@ export class BpmnComponent implements OnInit {
       if (err) {
         console.error(err);
       } else {
+        console.log(xml);
         this.setEncoded(xml, 'bpmn.xml');
       }
     });

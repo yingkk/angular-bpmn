@@ -1,4 +1,4 @@
-import config from './i18n-zh.config';
+import config from './zh';
 
 export default function customTranslate(template, replacements) {
     replacements = replacements || {};
