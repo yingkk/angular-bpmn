@@ -6,7 +6,7 @@ import PropertiesPanel from 'bpmn-js-properties-panel';
 
 // import BpmnPropertiesProvider from 'bpmn-js-properties-panel/lib/provider/bpmn';
 import CamundaPropertiesProvider from 'bpmn-js-properties-panel/lib/provider/camunda';
-import * as CamundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda.json';
+import CamundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda.json';
 import customTranslate from './i18n/translate';
 
 
