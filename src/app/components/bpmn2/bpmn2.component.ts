@@ -18,7 +18,7 @@ export class Bpmn2Component implements OnInit {
   form: Node = {};
   saveHref: any;
   saveName: string;
-  element: {}
+  element: {};
 
   private readonly newDiagram = 'assets/bpmn/init.bpmn';
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
@@ -96,6 +96,7 @@ export class Bpmn2Component implements OnInit {
     }
   }
 
+  // 监听节点名称
   onNodeNameChange(name: string) {
     const modeling = this.modeler.get('modeling');
     modeling.updateLabel(this.element, name);
@@ -138,12 +139,4 @@ export class Bpmn2Component implements OnInit {
       }
     });
   }
-
-
-
-
-  // panel
-
-
-
 }

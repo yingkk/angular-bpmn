@@ -19,7 +19,7 @@
     </div>
     <div class="toolbar">
         <a *ngIf="saveHref" title="download" [href]="saveHref" [download]="saveName">下载</a>
-        <a ref="saveDiagram" href="javascript:" title="download BPMN diagram" (click)="saveDiagram($event)">BPMN</a>
-        <a ref="saveSvg" href="javascript:" title="download as SVG image" (click)="saveSVG($event)">SVG</a>
+        <a href="javascript:void(0)" title="download BPMN diagram" (click)="saveDiagram($event)">BPMN</a>
+        <a href="javascript:void(0)" title="download as SVG image" (click)="saveSVG($event)">SVG</a>
     </div>
 </div>
