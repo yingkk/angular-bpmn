@@ -1,0 +1,25 @@
+<div class="bpmn">
+    <div class="canvas" id="canvas"></div>
+    <div class="prop-panel">
+        <form nz-form>
+            <nz-form-item>
+                <nz-form-label nzRequired>节点ID</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [ngModel]="form.id" name="id" required [disabled]="true" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzRequired>节点名称</nz-form-label>
+                <nz-form-control>
+                    <input nz-input [ngModel]="form.name" name="name" required
+                        (ngModelChange)="onNodeNameChange($event)" />
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </div>
+    <div class="toolbar">
+        <a *ngIf="saveHref" title="download" [href]="saveHref" [download]="saveName">下载</a>
+        <a ref="saveDiagram" href="javascript:" title="download BPMN diagram" (click)="saveDiagram($event)">BPMN</a>
+        <a ref="saveSvg" href="javascript:" title="download as SVG image" (click)="saveSVG($event)">SVG</a>
+    </div>
+</div>

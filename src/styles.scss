@@ -21,20 +21,7 @@ body {
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
- 
-body,
-html {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 12px;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
- 
-a:link {
-    text-decoration: none;
-}
- 
+@import "./styles/bpmn.reset.scss"
 

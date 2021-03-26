@@ -1,0 +1,19 @@
+@import "~bpmn-js/dist/assets/diagram-js.css";
+@import "~bpmn-js/dist/assets/bpmn-font/css/bpmn.css";
+@import "~bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css";
+@import "~bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
+
+.djs-palette-entries {
+  background-color: #fff;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@import "~ng-zorro-antd/ng-zorro-antd.css";
+.ant-form-item {
+  margin-bottom: 0;
+}
