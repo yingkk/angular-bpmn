@@ -15,11 +15,30 @@
                         (ngModelChange)="onNodeNameChange($event)" />
                 </nz-form-control>
             </nz-form-item>
+
+            <nz-form-item *ngIf="element?.type === 'bpmn:UserTask'">
+                <nz-form-label nzRequired>节点人员</nz-form-label>
+                <nz-form-control>
+                    <nz-radio-group [(ngModel)]="radioValue" (ngModelChange)="onRadioChange($event)"
+                        [ngModelOptions]="{standalone: true}">
+                        <label nz-radio-button nzValue="deptId">按部门</label>
+                        <label nz-radio-button nzValue="roleId">按角色</label>
+                    </nz-radio-group>
+                    <nz-select nzMode="multiple" [ngModel]="form.nodeUsers" name="nodeUsers" nzAllowClear nzOpen
+                        nzPlaceHolder="请选择" (ngModelChange)="onNodeUsersChange($event)">
+                        <nz-option-group [nzLabel]="item.key" *ngFor="let item of options | keyvalue">
+                            <nz-option [nzValue]="u.id" [nzLabel]="u.name" *ngFor="let u of item.value"></nz-option>
+                        </nz-option-group>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
         </form>
     </div>
     <div class="toolbar">
         <a *ngIf="saveHref" title="download" [href]="saveHref" [download]="saveName">下载</a>
         <a href="javascript:void(0)" title="download BPMN diagram" (click)="saveDiagram($event)">BPMN</a>
         <a href="javascript:void(0)" title="download as SVG image" (click)="saveSVG($event)">SVG</a>
+        <a href="javascript:void(0)" title="撤销" (click)="handleUndo($event)">撤销</a>
+        <a href="javascript:void(0)" title="恢复" (click)="handleRedo($event)">恢复</a>
     </div>
 </div>

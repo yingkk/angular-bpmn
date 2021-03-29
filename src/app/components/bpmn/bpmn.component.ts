@@ -44,6 +44,7 @@ export class BpmnComponent implements OnInit {
         PropertiesPanel,
         CamundaPropertiesProvider,
         // BpmnPropertiesProvider,
+        // { translate: ['value', customTranslate] }
         CustomTranslateModule
       ],
       moddleExtensions: {
