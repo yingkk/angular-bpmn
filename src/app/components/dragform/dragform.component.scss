@@ -1,0 +1,73 @@
+.dragform {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  // user-select: none;
+  .fields {
+    order: 1;
+    width: 60px;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgb(0 0 0 / 10%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .field-item {
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      font-size: 22px;
+      line-height: 60px;
+      cursor: pointer;
+    }
+    .field-item:hover {
+      color: #1890ff;
+      background-color: #e6f7ff;
+    }
+  }
+  .form {
+    order: 2;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .form-title {
+      width: 100%;
+      height: 38px;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      flex: none;
+    }
+    .form-container {
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+    }
+  }
+  .setting {
+    order: 3;
+    width: 280px;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgb(0 0 0 / 10%);
+    .setting-bar {
+      width: 100%;
+      height: 32px;
+      flex: none;
+    }
+    .setting-container {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -9,6 +9,8 @@ import { Bpmn2Component } from './components/bpmn2/bpmn2.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragformComponent } from './components/dragform/dragform.component';
+import { Test2Component } from './pages/test2/test2.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BpmnComponent,
     TestComponent,
     Bpmn2Component,
+    DragformComponent,
+    Test2Component,
   ],
   imports: [
     BrowserModule,

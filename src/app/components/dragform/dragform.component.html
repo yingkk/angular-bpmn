@@ -1,0 +1,40 @@
+<div class="dragform">
+    <ul class="fields">
+        <li class="field-item" *ngFor="let item of fields" draggable="true" (dragstart)="onDragStart($event, item)">
+            <i [class]="item.icon" [title]="item.title"></i>
+        </li>
+    </ul>
+
+    <div class="form">
+        <div class="form-title">表单名称</div>
+        <div class="form-container">
+            <form nz-form (drop)="onDrop($event)" (dragOver)="onDragOver($event)">
+                <!-- <nz-form-item>
+                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>单行输入框</nz-form-label>
+                    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
+                        <input nz-input type="text" id="password" name="inputName" />
+                    </nz-form-control>
+                </nz-form-item> -->
+            </form>
+        </div>
+    </div>
+
+    <div class="setting">
+        <div class="setting-bar">
+            <nz-radio-group [(ngModel)]="settingRadio" (ngModelChange)="onRadioValueChange($event)">
+                <label nz-radio-button nzValue="1">属性</label>
+                <label nz-radio-button nzValue="2">样式</label>
+                <label nz-radio-button nzValue="3">其他</label>
+            </nz-radio-group>
+        </div>
+        <div class="setting-container">
+            <ng-container [ngSwitch]="settingRadio">
+                <ng-container *ngSwitchCase="'2'">this is style content </ng-container>
+                <ng-container *ngSwitchCase="'3'">this is other content </ng-container>
+                <ng-container *ngSwitchDefault>
+                    this is property content
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</div>

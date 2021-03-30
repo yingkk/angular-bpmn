@@ -1,3 +1,4 @@
+// bpmn
 @import "~bpmn-js/dist/assets/diagram-js.css";
 @import "~bpmn-js/dist/assets/bpmn-font/css/bpmn.css";
 @import "~bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css";
@@ -18,7 +19,16 @@
   top: 1px;
 }
 
+
+// antd
 @import "~ng-zorro-antd/ng-zorro-antd.css";
 .ant-form-item {
   margin-bottom: 0;
 }
+
+.ant-radio-button-wrapper {
+  padding: 0 22px;
+}
+// font-awesome
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
