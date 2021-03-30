@@ -76,6 +76,6 @@ export class DragformComponent implements OnInit {
     console.log('drop');
     e.preventDefault();
     const data = e.dataTransfer.getData('text/html');
-    e.target.appendChild(data);
+    e.target.appendChild('<p>哈哈哈哈哈</p>');
   }
 }
