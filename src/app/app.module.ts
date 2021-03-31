@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragformComponent } from './components/dragform/dragform.component';
 import { Test2Component } from './pages/test2/test2.component';
+import { HtmlPipe } from './common/pipe/html.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { Test2Component } from './pages/test2/test2.component';
     Bpmn2Component,
     DragformComponent,
     Test2Component,
+    HtmlPipe,
   ],
   imports: [
     BrowserModule,

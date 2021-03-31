@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 
 interface Field {
   icon?: string;
-  title?: string;
+  label?: string;
   properties?: string[];
   styles?: string[];
   code?: string;
+  // key?: string;
+  // label?: string;
+  // required?: boolean;
+  // order?: number;
+  // controlType?: string;
 }
 
 @Component({
@@ -18,41 +24,42 @@ export class DragformComponent implements OnInit {
   fields: Field[] = [
     {
       icon: 'fa fa-pencil',
-      title: '单行输入框',
-      code: `<nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>单行输入框</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
+      label: '单行输入框',
+      code: `
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>单行输入框</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name!">
         <input
           nz-input
           type="text"
-          id="password"
-          name="inputName"
+          id="name"
+          name="name"
         />
       </nz-form-control>
-    </nz-form-item>`
+    `
     },
     {
       icon: 'fa fa-paint-brush',
-      title: '多行输入框'
+      label: '多行输入框'
     },
     {
       icon: 'fa fa-dot-circle-o',
-      title: '单选框'
+      label: '单选框'
     },
     {
       icon: 'fa fa-check-square-o',
-      title: '复选框'
+      label: '复选框'
     },
     {
       icon: 'fa fa-toggle-down',
-      title: '下拉框'
+      label: '下拉框'
     }
   ];
+  items: SafeHtml[] = [];
 
   settingRadio = '1';
   currentDragField: Field;
 
-  constructor() { }
+  constructor(private sanitized: DomSanitizer) { }
 
   ngOnInit() {
   }
@@ -64,7 +71,9 @@ export class DragformComponent implements OnInit {
   onDragStart(e, item) {
     console.log('dragstart');
     this.currentDragField = item;
-    e.dataTransfer.setData('text/html', this.currentDragField.code);
+    // e.dataTransfer.setData('Text', e.target.id);
+    // e.dataTransfer.setData('text/html', this.currentDragField.code);
+
   }
 
   onDragOver(e) {
@@ -76,6 +85,11 @@ export class DragformComponent implements OnInit {
     console.log('drop');
     e.preventDefault();
     const data = e.dataTransfer.getData('text/html');
-    e.target.appendChild('<p>哈哈哈哈哈</p>');
+    const item: SafeHtml = this.sanitized.bypassSecurityTrustHtml(this.currentDragField.code);
+    this.items.push(item);
+    // this.items.push(data)
+
+
+    // e.dataTransfer.clearData();
   }
 }

@@ -1,7 +1,8 @@
 <div class="dragform">
     <ul class="fields">
-        <li class="field-item" *ngFor="let item of fields" draggable="true" (dragstart)="onDragStart($event, item)">
-            <i [class]="item.icon" [title]="item.title"></i>
+        <li class="field-item" *ngFor="let item of fields; let key = index" draggable="true"
+            (dragstart)="onDragStart($event, item)" [id]="'item'+key">
+            <i [class]="item.icon" [title]="item.label"></i>
         </li>
     </ul>
 
@@ -9,12 +10,8 @@
         <div class="form-title">表单名称</div>
         <div class="form-container">
             <form nz-form (drop)="onDrop($event)" (dragover)="onDragOver($event)">
-                <!-- <nz-form-item>
-                    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>单行输入框</nz-form-label>
-                    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
-                        <input nz-input type="text" id="password" name="inputName" />
-                    </nz-form-control>
-                </nz-form-item> -->
+                <nz-form-item *ngFor="let item of items" [innerHtml]="item">
+                </nz-form-item>
             </form>
         </div>
     </div>
