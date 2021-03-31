@@ -1,0 +1,5 @@
+<form  nz-form [formGroup]="form">
+    <ng-container *ngFor="let element of elements">
+        <app-dynamic-form-prop [element]="element" [form]="form"></app-dynamic-form-prop>
+    </ng-container>
+</form>

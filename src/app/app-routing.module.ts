@@ -4,7 +4,7 @@ import { TestComponent } from './pages/test/test.component';
 import { Test2Component } from './pages/test2/test2.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'test', pathMatch: 'full' },
+  { path: '', redirectTo: 'test2', pathMatch: 'full' },
   { path: 'test', component: TestComponent },
   { path: 'test2', component: Test2Component },
 ];

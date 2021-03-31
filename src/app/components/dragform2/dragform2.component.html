@@ -1,0 +1,32 @@
+<div class="dragform">
+    <ul class="fields">
+        <li class="field-item" *ngFor="let item of list; let key = index" draggable="true"
+            (dragstart)="onDragStart($event, item)" [id]="'item'+key">
+            <i [class]="item.icon" [title]="item.label"></i>
+        </li>
+    </ul>
+    <div class="form">
+        <div class="form-title">表单名称</div>
+        <div class="form-container" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+           <app-dynamic-form [elements]="elements"></app-dynamic-form> 
+        </div>
+    </div>
+    <div class="setting">
+        <div class="setting-bar">
+            <nz-radio-group [(ngModel)]="settingRadio" (ngModelChange)="onRadioValueChange($event)">
+                <label nz-radio-button nzValue="1">属性</label>
+                <label nz-radio-button nzValue="2">样式</label>
+                <label nz-radio-button nzValue="3">其他</label>
+            </nz-radio-group>
+        </div>
+        <div class="setting-container">
+            <ng-container [ngSwitch]="settingRadio">
+                <ng-container *ngSwitchCase="'2'">this is style content </ng-container>
+                <ng-container *ngSwitchCase="'3'">this is other content </ng-container>
+                <ng-container *ngSwitchDefault>
+                    this is property content
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</div>

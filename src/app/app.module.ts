@@ -12,6 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragformComponent } from './components/dragform/dragform.component';
 import { Test2Component } from './pages/test2/test2.component';
 import { HtmlPipe } from './common/pipe/html.pipe';
+import { Dragform2Component } from './components/dragform2/dragform2.component';
+import { DynamicFormComponent } from './components/dragform2/components/dynamic-form/dynamic-form.component';
+import { DynamicFormPropComponent } from './components/dragform2/components/dynamic-form-prop/dynamic-form-prop.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +26,9 @@ import { HtmlPipe } from './common/pipe/html.pipe';
     DragformComponent,
     Test2Component,
     HtmlPipe,
+    Dragform2Component,
+    DynamicFormComponent,
+    DynamicFormPropComponent,
   ],
   imports: [
     BrowserModule,
