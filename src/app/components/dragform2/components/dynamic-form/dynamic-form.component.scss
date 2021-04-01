@@ -1,5 +1,11 @@
 form {
-    width: 800px;
-    height: 100%;
-    margin: 0 auto
+  width: 800px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.active {
+  ::ng-deep .ant-form-item {
+    background-color: #e6f7ff;
+  }
 }

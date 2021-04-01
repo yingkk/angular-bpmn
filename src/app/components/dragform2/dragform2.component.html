@@ -6,27 +6,98 @@
         </li>
     </ul>
     <div class="form">
-        <div class="form-title">表单名称</div>
+        <div class="form-title">
+            <input [(ngModel)]="formName" id="formNameInput" />
+            <span class="title-edit-icon" (click)="handleClickFormName()"> <i class="fa fa-edit"></i></span>
+        </div>
         <div class="form-container" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
-           <app-dynamic-form [elements]="elements"></app-dynamic-form> 
+            <app-dynamic-form [elements]="elements" (outer)="onActiceIndexChange($event)"></app-dynamic-form>
         </div>
     </div>
     <div class="setting">
-        <div class="setting-bar">
-            <nz-radio-group [(ngModel)]="settingRadio" (ngModelChange)="onRadioValueChange($event)">
-                <label nz-radio-button nzValue="1">属性</label>
-                <label nz-radio-button nzValue="2">样式</label>
-                <label nz-radio-button nzValue="3">事件</label>
-            </nz-radio-group>
-        </div>
-        <div class="setting-container">
-            <ng-container [ngSwitch]="settingRadio">
-                <ng-container *ngSwitchCase="'2'">this is style content </ng-container>
-                <ng-container *ngSwitchCase="'3'">this is other content </ng-container>
-                <ng-container *ngSwitchDefault>
-                    this is event content
+        <ng-container *ngIf="activeFormElement">
+            <div class="setting-bar">
+                <nz-radio-group [(ngModel)]="settingRadio" (ngModelChange)="onRadioValueChange($event)">
+                    <label nz-radio-button nzValue="1">属性</label>
+                    <label nz-radio-button nzValue="2">样式</label>
+                    <label nz-radio-button nzValue="3">事件</label>
+                </nz-radio-group>
+            </div>
+            <div class="setting-container">
+                <ng-container [ngSwitch]="settingRadio">
+                    <ng-container *ngSwitchCase="'2'">this is style content </ng-container>
+                    <ng-container *ngSwitchCase="'3'">this is other content </ng-container>
+                    <ng-container *ngSwitchDefault>
+                        <div class="prop-item">
+                            <span class="prop-item-title">字段含义:</span>
+                            <input nz-input nzSize="'small'" placeholder="请输入字段含义"
+                                [(ngModel)]="activeFormElement.label" />
+                        </div>
+                        <div class="prop-item">
+                            <span class="prop-item-title">字段名:</span>
+                            <input nz-input nzSize="'small'" placeholder="请输入字段名" [(ngModel)]="activeFormElement.key" />
+                        </div>
+                        <div class="prop-item"
+                            *ngIf="activeFormElement.controlType ==='text' || activeFormElement.controlType ==='textarea' || activeFormElement.controlType ==='select'  ">
+                            <span class="prop-item-title">占位符:</span>
+                            <input nz-input nzSize="'small'" placeholder="请输入占位符"
+                                [(ngModel)]="activeFormElement.placeholder" />
+                        </div>
+                        <div class="prop-item"
+                            *ngIf="activeFormElement.controlType ==='radio' || activeFormElement.controlType ==='select'">
+                            <span class="prop-item-title">选项:</span>
+                            <nz-radio-group [(ngModel)]="activeFormElement.value" [name]="activeFormElement.key"
+                                [id]="activeFormElement.key">
+                                <label nz-radio [nzValue]="op.key"
+                                    *ngFor="let op of activeFormElement.options; let key = index">
+                                    <input nz-input nzSize="'small'" [(ngModel)]="op.value" />
+                                    <span  class="dynamic-option-delete" (click)="delOption(key)"><i
+                                            class="fa fa-minus-circle"></i></span>
+                                </label>
+                            </nz-radio-group>
+                            <button nz-button nzType="dashed" style="width: 100%; margin-top: 10px;"
+                                (click)="addOption($event)">
+                                <i class="fa fa-plus"></i>
+                                Add option
+                            </button>
+                        </div>
+                        <div class="prop-item" *ngIf="activeFormElement.controlType ==='checkbox'">
+                            <span class="prop-item-title">选项:</span>
+                            <!-- <nz-radio-group [(ngModel)]="activeFormElement.value" [name]="activeFormElement.key"
+                                [id]="activeFormElement.key">
+                                <label nz-radio [nzValue]="op.key"
+                                    *ngFor="let op of activeFormElement.options; let key = index">
+                                    <input nz-input nzSize="'small'" placeholder="请输入选项" [(ngModel)]="op.value" />
+                                    <span *ngIf="key" class="dynamic-option-delete" (click)="delOption(key)"><i
+                                            class="fa fa-minus-circle"></i></span>
+                                </label>
+                            </nz-radio-group> -->
+                            <nz-checkbox-wrapper style="width: 100%;">
+                                <!-- <div nz-col> -->
+                                <!-- <div nz-row nzSpan="8"
+                                        *ngFor="let op of activeFormElement.options; let key = index"> -->
+                                <ng-container *ngFor="let op of activeFormElement.options; let key = index">
+                                    <label nz-checkbox [nzValue]="op.key">
+                                        <input nz-input nzSize="'small'" [(ngModel)]="op.value" />
+                                        <span class="dynamic-option-delete" (click)="delOption(key)"><i
+                                                class="fa fa-minus-circle"></i></span>
+                                    </label>
+
+                                </ng-container>
+
+                                <!-- </div> -->
+                                <!-- </div> -->
+                            </nz-checkbox-wrapper>
+                            <button nz-button nzType="dashed" style="width: 100%; margin-top: 10px;"
+                                (click)="addOption($event)">
+                                <i class="fa fa-plus"></i>
+                                Add option
+                            </button>
+                        </div>
+                    </ng-container>
                 </ng-container>
-            </ng-container>
-        </div>
+            </div>
+        </ng-container>
+
     </div>
 </div>

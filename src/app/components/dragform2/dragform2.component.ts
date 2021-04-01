@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormElementBase } from './init/FormElementBase';
 import { FormElementCheckBox, FormElementNumber, FormElementRadio, FormElementSelect, FormElementText, FormElementTextarea } from './init/FormElementDefine';
@@ -18,6 +18,8 @@ interface DragElement {
 export class Dragform2Component implements OnInit {
 
   settingRadio = '1';
+  formName = '表单名称';
+  @ViewChild('formName', { static: false }) formNameInput: any;
   elements: FormElementBase<string>[] = [];
   list: DragElement[] = [
     {
@@ -52,6 +54,8 @@ export class Dragform2Component implements OnInit {
     }
   ];
 
+  activeFormElement: FormElementBase<string>;
+
 
   ngOnInit() {
   }
@@ -72,9 +76,30 @@ export class Dragform2Component implements OnInit {
     e.preventDefault();
     const data = e.dataTransfer.getData('Text');
     this.createFormElement(data, this.elements);
-    console.log(this.elements);
 
     // e.dataTransfer.clearData();
+  }
+
+  onActiceIndexChange(val: number) {
+    this.activeFormElement = this.elements[val];
+  }
+
+  handleClickFormName() {
+    document.getElementById('formNameInput').focus();
+  }
+
+  addOption(e) {
+    const temp = this.activeFormElement.options.sort((a, b) => parseInt(a.key, 10) - parseInt(b.key, 10));
+    const largeKeyStr = temp[temp.length - 1].key;
+    const nextKey = parseInt(largeKeyStr, 10) + 1;
+    const typeName = this.activeFormElement.controlType === 'radio' ? 'Radio' : 'Label';
+    this.activeFormElement.options.push(
+      { key: nextKey + '', value: typeName + nextKey }
+    );
+  }
+
+  delOption(curIndex: number) {
+    this.activeFormElement.options.splice(curIndex, 1);
   }
 
   createFormElement(type: string, elements: FormElementBase<string>[]) {
@@ -132,7 +157,7 @@ export class Dragform2Component implements OnInit {
         temp = new FormElementCheckBox({
           key: 'check',
           label: '复选框',
-          value: '',
+          value: undefined,
           required: false,
           options: [
             { key: '1', value: 'Label 1' },
@@ -161,4 +186,5 @@ export class Dragform2Component implements OnInit {
     elements.sort((a, b) => a.order - b.order);
     return elements;
   }
+
 }
