@@ -3,7 +3,14 @@
         <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}</nz-form-label>
         <nz-form-control [nzSpan]="16">
             <input nz-input [ngModel]="form[element.key]" [name]="element.key" [id]="element.key"
-                [required]="element.required" />
+                [required]="element.required" [placeholder]="element.placeholder" />
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item *ngSwitchCase="'number'">
+        <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}</nz-form-label>
+        <nz-form-control [nzSpan]="16">
+            <nz-input-number [ngModel]="form[element.key]" [required]="element.required" [name]="element.key"
+                [id]="element.key"></nz-input-number>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item *ngSwitchCase="'radio'">
@@ -19,26 +26,26 @@
         <nz-form-control [nzSpan]="16">
             <nz-checkbox-wrapper style="width: 100%;">
                 <div nz-row>
-                  <div nz-col nzSpan="8"><label nz-checkbox nzValue="A" [ngModel]="true">A</label></div>
-                  <div nz-col nzSpan="8"><label nz-checkbox nzValue="B">B</label></div>
-                  <div nz-col nzSpan="8"><label nz-checkbox nzValue="C">C</label></div>
-                  <div nz-col nzSpan="8"><label nz-checkbox nzValue="D">D</label></div>
-                  <div nz-col nzSpan="8"><label nz-checkbox nzValue="E">E</label></div>
-                </div>
-              </nz-checkbox-wrapper>
-            <!-- <nz-checkbox-wrapper style="width: 100%;">
-                <div nz-row>
                     <div nz-col nzSpan="8" *ngFor="let item of element.options"><label nz-checkbox [nzValue]="item.key"
                             [ngModel]="form[element.key]">{{item.value}}</label></div>
                 </div>
-            </nz-checkbox-wrapper> -->
+            </nz-checkbox-wrapper>
         </nz-form-control>
     </nz-form-item>
     <nz-form-item *ngSwitchCase="'textarea'">
         <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}</nz-form-label>
         <nz-form-control [nzSpan]="16">
             <textarea rows="4" nz-input [ngModel]="form[element.key]" [name]="element.key" [id]="element.key"
-                [required]="element.required"></textarea>
+                [required]="element.required" [placeholder]="element.placeholder"></textarea>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item *ngSwitchCase="'select'">
+        <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}</nz-form-label>
+        <nz-form-control [nzSpan]="16">
+            <nz-select [ngModel]="form[element.key]" [name]="element.key" [id]="element.key"
+                [nzPlaceHolder]="element.placeholder" nzAllowClear>
+                <nz-option [nzValue]="op.key" [nzLabel]="op.value" *ngFor="let op of element.options"></nz-option>
+            </nz-select>
         </nz-form-control>
     </nz-form-item>
 </ng-container>

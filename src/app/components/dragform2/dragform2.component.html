@@ -16,7 +16,7 @@
             <nz-radio-group [(ngModel)]="settingRadio" (ngModelChange)="onRadioValueChange($event)">
                 <label nz-radio-button nzValue="1">属性</label>
                 <label nz-radio-button nzValue="2">样式</label>
-                <label nz-radio-button nzValue="3">其他</label>
+                <label nz-radio-button nzValue="3">事件</label>
             </nz-radio-group>
         </div>
         <div class="setting-container">
@@ -24,7 +24,7 @@
                 <ng-container *ngSwitchCase="'2'">this is style content </ng-container>
                 <ng-container *ngSwitchCase="'3'">this is other content </ng-container>
                 <ng-container *ngSwitchDefault>
-                    this is property content
+                    this is event content
                 </ng-container>
             </ng-container>
         </div>

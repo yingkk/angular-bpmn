@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormElementBase } from './init/FormElementBase';
-import { FormElementRadio, FormElementSelect, FormElementText, FormElementTextarea } from './init/FormElementDefine';
-import { FormElementService } from './service/form-element.service';
+import { FormElementCheckBox, FormElementNumber, FormElementRadio, FormElementSelect, FormElementText, FormElementTextarea } from './init/FormElementDefine';
+// import { FormElementService } from './service/form-element.service';
 
 interface DragElement {
   icon?: string;
@@ -24,6 +24,11 @@ export class Dragform2Component implements OnInit {
       icon: 'fa fa-pencil',
       type: 'text',
       label: '单行文本框'
+    },
+    {
+      icon: 'fa fa-hashtag',
+      type: 'number',
+      label: '数字框'
     },
     {
       icon: 'fa fa-paint-brush',
@@ -84,8 +89,19 @@ export class Dragform2Component implements OnInit {
           key: 'name',
           label: '单行文本框',
           value: '',
-          required: true,
-          order: 1
+          required: false,
+          order: 1,
+          placeholder: '请输入'
+        });
+        break;
+      case 'number':
+        temp = new FormElementNumber({
+          key: 'number',
+          label: '数字框',
+          value: '',
+          required: false,
+          order: 1,
+          placeholder: '请输入',
         });
         break;
       case 'textarea':
@@ -93,8 +109,9 @@ export class Dragform2Component implements OnInit {
           key: 'textarea',
           label: '多行文本框',
           value: '',
-          required: true,
-          order: 2
+          required: false,
+          order: 2,
+          placeholder: '请输入内容'
         });
         break;
       case 'radio':
@@ -102,18 +119,17 @@ export class Dragform2Component implements OnInit {
           key: 'name',
           label: '单选框',
           value: '',
-          required: true,
+          required: false,
           order: 3,
           options: [
             { key: '1', value: 'Radio 1' },
             { key: '2', value: 'Radio 2' },
             { key: '3', value: 'Radio 3' },
-            { key: '4', value: 'Radio 4' }
           ],
         });
         break;
       case 'checkbox':
-        temp = new FormElementSelect({
+        temp = new FormElementCheckBox({
           key: 'check',
           label: '复选框',
           value: '',
@@ -122,7 +138,6 @@ export class Dragform2Component implements OnInit {
             { key: '1', value: 'Label 1' },
             { key: '2', value: 'Label 2' },
             { key: '3', value: 'Label 3' },
-            { key: '4', value: 'Label 4' }
           ],
           order: 4
         });
@@ -131,11 +146,12 @@ export class Dragform2Component implements OnInit {
         temp = new FormElementSelect({
           key: 'selected',
           label: '下拉选择框',
+          placeholder: '请选择',
+          required: false,
           options: [
             { key: '1', value: 'Option 1' },
             { key: '2', value: 'Option 2' },
             { key: '3', value: 'Option 3' },
-            { key: '4', value: 'Option 4' }
           ],
           order: 5
         });
@@ -145,48 +161,4 @@ export class Dragform2Component implements OnInit {
     elements.sort((a, b) => a.order - b.order);
     return elements;
   }
-
-
-  // elements: FormElementBase<string>[] = [
-  //   new FormElementText({
-  //     key: 'name',
-  //     label: '单行文本框',
-  //     value: '',
-  //     required: true,
-  //     order: 1
-  //   }),
-
-  //   new FormElementText({
-  //     key: 'quantity',
-  //     label: '数字文本框',
-  //     value: '',
-  //     required: true,
-  //     order: 2,
-  //     type: 'number'
-  //   }),
-
-  //   new FormElementTextarea({
-  //     key: 'textarea',
-  //     label: '多行文本框',
-  //     value: '',
-  //     required: true,
-  //     order: 3
-  //   }),
-
-  //   new FormElementSelect({
-  //     key: 'selected',
-  //     label: '下拉选择框',
-  //     options: [
-  //       { key: '1', value: 'Option 1' },
-  //       { key: '2', value: 'Option 2' },
-  //       { key: '3', value: 'Option 3' },
-  //       { key: '4', value: 'Option 4' }
-  //     ],
-  //     order: 4
-  //   })
-  // ];
-  // elements$: Observable<FormElementBase<any>[]>;
-  // constructor(service: FormElementService) {
-  //   this.elements$ = service.getElements();
-  // }
 }
