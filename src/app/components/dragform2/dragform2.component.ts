@@ -80,8 +80,12 @@ export class Dragform2Component implements OnInit {
     // e.dataTransfer.clearData();
   }
 
-  onActiceIndexChange(val: number) {
-    this.activeFormElement = this.elements[val];
+  onActiceIndexChange(activeIndexVal: number) {
+    this.activeFormElement = this.elements[activeIndexVal];
+  }
+
+  handleDelElement(indexVal: number) {
+    this.elements.splice(indexVal, 1);
   }
 
   handleClickFormName() {

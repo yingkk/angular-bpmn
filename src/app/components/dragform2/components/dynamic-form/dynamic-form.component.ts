@@ -20,7 +20,8 @@ export class DynamicFormComponent implements OnInit {
 
 
   @Input() elements: FormElementBase<string>[];
-  @Output() outer = new EventEmitter<number>();
+  @Output() outActiveIndex = new EventEmitter<number>();
+  @Output() outDelIndex = new EventEmitter<number>();
   form: FormGroup;
 
   activeIndex: number;
@@ -29,10 +30,16 @@ export class DynamicFormComponent implements OnInit {
     this.form = this.ecs.toFormGroup(this.elements);
   }
 
-  handleClick(val: number) {
-    console.log('handleClick');
-    this.activeIndex = val;
-    this.outer.emit(this.activeIndex);
+  handleClick(indexVal: number, e) {
+    const className = e.target.parentNode.className;
+    if (className === 'dynamic-delete-button') {
+      // del
+      this.outDelIndex.emit(indexVal);
+    } else {
+      // active
+      this.activeIndex = indexVal;
+      this.outActiveIndex.emit(this.activeIndex);
+    }
   }
 
 }

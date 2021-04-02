@@ -7,7 +7,7 @@
                     [required]="element.required" [placeholder]="element.placeholder" />
             </nz-form-control>
         </nz-form-item>
-        <span class="dynamic-delete-button" (click)="delElement(element);$event.stopPropagation();" ><i class="fa fa-minus-circle"></i></span>
+        <span class="dynamic-delete-button" (click)="$event.preventDefault();" ><i class="fa fa-minus-circle"></i></span>
     </div>
 
     <div class="form-item" *ngSwitchCase="'number'">

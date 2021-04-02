@@ -16,15 +16,9 @@ import { FormElementBase } from '../../init/FormElementBase';
 export class DynamicFormPropComponent implements OnInit {
   @Input() element: FormElementBase<string>;
   @Input() form: FormGroup;
-  // @Output() outer =  new EventEmitter<any>();
   get isValid() { return this.form.controls[this.element.key].valid; }
   constructor() { }
 
   ngOnInit() {
   }
-  delElement(element) {
-    console.log('delElement')
-  }
-
-
 }
