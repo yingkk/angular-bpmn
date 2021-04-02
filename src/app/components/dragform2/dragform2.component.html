@@ -63,19 +63,7 @@
                         </div>
                         <div class="prop-item" *ngIf="activeFormElement.controlType ==='checkbox'">
                             <span class="prop-item-title">选项:</span>
-                            <!-- <nz-radio-group [(ngModel)]="activeFormElement.value" [name]="activeFormElement.key"
-                                [id]="activeFormElement.key">
-                                <label nz-radio [nzValue]="op.key"
-                                    *ngFor="let op of activeFormElement.options; let key = index">
-                                    <input nz-input nzSize="'small'" placeholder="请输入选项" [(ngModel)]="op.value" />
-                                    <span *ngIf="key" class="dynamic-option-delete" (click)="delOption(key)"><i
-                                            class="fa fa-minus-circle"></i></span>
-                                </label>
-                            </nz-radio-group> -->
                             <nz-checkbox-wrapper style="width: 100%;">
-                                <!-- <div nz-col> -->
-                                <!-- <div nz-row nzSpan="8"
-                                        *ngFor="let op of activeFormElement.options; let key = index"> -->
                                 <ng-container *ngFor="let op of activeFormElement.options; let key = index">
                                     <label nz-checkbox [nzValue]="op.key">
                                         <input nz-input nzSize="'small'" [(ngModel)]="op.value" />
@@ -84,9 +72,6 @@
                                     </label>
 
                                 </ng-container>
-
-                                <!-- </div> -->
-                                <!-- </div> -->
                             </nz-checkbox-wrapper>
                             <button nz-button nzType="dashed" style="width: 100%; margin-top: 10px;"
                                 (click)="addOption($event)">

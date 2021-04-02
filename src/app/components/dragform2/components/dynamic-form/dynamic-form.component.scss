@@ -7,5 +7,6 @@ form {
 .active {
   ::ng-deep .ant-form-item {
     background-color: #e6f7ff;
+    border: 1px dashed #1890ff;
   }
 }

@@ -29,9 +29,10 @@ export class DynamicFormComponent implements OnInit {
     this.form = this.ecs.toFormGroup(this.elements);
   }
 
-  handleClick(val: number, e) {
-    e.preventDefault();
+  handleClick(val: number) {
+    console.log('handleClick');
     this.activeIndex = val;
     this.outer.emit(this.activeIndex);
   }
+
 }

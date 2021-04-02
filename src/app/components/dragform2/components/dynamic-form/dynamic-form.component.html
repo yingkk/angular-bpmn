@@ -1,5 +1,5 @@
 <form  nz-form [formGroup]="form">
     <ng-container *ngFor="let element of elements; let key = index">
-        <app-dynamic-form-prop [element]="element" [form]="form" (click)="handleClick(key, $event)"  [ngClass]="[activeIndex === key ? 'active': '']"></app-dynamic-form-prop>
+        <app-dynamic-form-prop [element]="element" [form]="form" (click)="handleClick(key)"  [ngClass]="[activeIndex === key ? 'active': '']"></app-dynamic-form-prop>
     </ng-container>
 </form>
