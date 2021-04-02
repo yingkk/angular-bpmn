@@ -58,14 +58,14 @@
                             <button nz-button nzType="dashed" style="width: 100%; margin-top: 10px;"
                                 (click)="addOption($event)">
                                 <i class="fa fa-plus"></i>
-                                Add option
+                                Add Option
                             </button>
                         </div>
                         <div class="prop-item" *ngIf="activeFormElement.controlType ==='checkbox'">
-                            <span class="prop-item-title">选项:</span>
-                            <nz-checkbox-wrapper style="width: 100%;">
-                                <ng-container *ngFor="let op of activeFormElement.options; let key = index">
-                                    <label nz-checkbox [nzValue]="op.key">
+                            <span class="prop-item-title">选项{{ activeFormElement.value }}:</span>
+                            <nz-checkbox-wrapper style="width: 100%;" (nzOnChange)="onCheckBoxChange($event)">
+                                <ng-container *ngFor="let op of activeFormElement.options; let key = index;">
+                                    <label nz-checkbox [nzValue]="op.key"  [(ngModel)]="op.checked">
                                         <input nz-input nzSize="'small'" [(ngModel)]="op.value"
                                             (click)="$event.stopPropagation();" />
                                         <span class="dynamic-option-delete" (click)="delOption(key)"><i

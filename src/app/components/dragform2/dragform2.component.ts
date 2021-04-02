@@ -84,6 +84,15 @@ export class Dragform2Component implements OnInit {
     this.activeFormElement = this.elements[activeIndexVal];
   }
 
+
+  onCheckBoxChange(val: string[]) {
+    this.activeFormElement.options.forEach(t => ({
+      ...t,
+      checked: val.includes(t.key)
+    }));
+    this.activeFormElement.value = val.toString();
+  }
+
   handleDelElement(indexVal: number) {
     this.elements.splice(indexVal, 1);
   }
@@ -161,7 +170,7 @@ export class Dragform2Component implements OnInit {
         temp = new FormElementCheckBox({
           key: 'check',
           label: '复选框',
-          value: undefined,
+          value: '',
           required: false,
           options: [
             { key: '1', value: 'Label 1' },

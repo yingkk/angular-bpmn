@@ -7,7 +7,7 @@
                     [required]="element.required" [placeholder]="element.placeholder" />
             </nz-form-control>
         </nz-form-item>
-        <span class="dynamic-delete-button" (click)="$event.preventDefault();" ><i class="fa fa-minus-circle"></i></span>
+        <span class="dynamic-delete-button" (click)="$event.preventDefault();"><i class="fa fa-minus-circle"></i></span>
     </div>
 
     <div class="form-item" *ngSwitchCase="'number'">
@@ -39,8 +39,8 @@
             <nz-form-control [nzSpan]="16">
                 <nz-checkbox-wrapper style="width: 100%;">
                     <div nz-row>
-                        <div nz-col nzSpan="8" *ngFor="let item of element.options">
-                            <label nz-checkbox [nzValue]="item.key" [ngModel]="element.value">{{item.value}}</label>
+                        <div nz-col nzSpan="8" *ngFor="let item of element.options; let key = index">
+                            <label nz-checkbox [nzValue]="item.key" [ngModel]="item.checked">{{item.value}}</label>
                         </div>
                     </div>
                 </nz-checkbox-wrapper>

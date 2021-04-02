@@ -21,4 +21,5 @@ export class DynamicFormPropComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }

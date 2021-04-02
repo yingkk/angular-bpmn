@@ -7,7 +7,7 @@ export class FormElementBase<T> {
     controlType: string;
     type: string;
     placeholder: string;
-    options: { key: string, value: string }[];
+    options: { key: string, value: string, checked?: boolean }[];
 
     constructor(options: {
         value?: T;
@@ -18,7 +18,7 @@ export class FormElementBase<T> {
         controlType?: string;
         type?: string;
         placeholder?: string;
-        options?: { key: string, value: string }[];
+        options?: { key: string, value: string, checked?: boolean }[];
     } = {}) {
         this.value = options.value;
         this.key = options.key || '';
