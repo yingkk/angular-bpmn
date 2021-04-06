@@ -23,7 +23,4 @@ export class FormElementText extends FormElementBase<string> {
 
 export class FormElementNumber extends FormElementBase<string> {
     controlType = 'number';
-    // min?: number;
-    // max?: number;
-    // step?: number;
 }

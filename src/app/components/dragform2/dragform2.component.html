@@ -11,7 +11,8 @@
             <span class="title-edit-icon" (click)="handleClickFormName()"> <i class="fa fa-edit"></i></span>
         </div>
         <div class="form-container" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
-            <app-dynamic-form [elements]="elements" (outActiveIndex)="onActiceIndexChange($event)" (outDelIndex)="handleDelElement($event)"></app-dynamic-form>
+            <app-dynamic-form [elements]="elements" (outActiveIndex)="onActiceIndexChange($event)"
+                (outDelIndex)="handleDelElement($event)"></app-dynamic-form>
         </div>
     </div>
     <div class="setting">
@@ -44,7 +45,7 @@
                                 [(ngModel)]="activeFormElement.placeholder" />
                         </div>
                         <div class="prop-item"
-                            *ngIf="activeFormElement.controlType ==='radio' || activeFormElement.controlType ==='select'">
+                            *ngIf="activeFormElement.controlType ==='radio' || (activeFormElement.controlType ==='select' && activeFormElement.mode === 'default')">
                             <span class="prop-item-title">选项:</span>
                             <nz-radio-group [(ngModel)]="activeFormElement.value" [name]="activeFormElement.key"
                                 [id]="activeFormElement.key">
@@ -61,17 +62,17 @@
                                 Add Option
                             </button>
                         </div>
-                        <div class="prop-item" *ngIf="activeFormElement.controlType ==='checkbox'">
-                            <span class="prop-item-title">选项{{ activeFormElement.value }}:</span>
+                        <div class="prop-item"
+                            *ngIf="activeFormElement.controlType ==='checkbox' ||  (activeFormElement.controlType ==='select' && activeFormElement.mode === 'multiple')">
+                            <span class="prop-item-title">选项:</span>
                             <nz-checkbox-wrapper style="width: 100%;" (nzOnChange)="onCheckBoxChange($event)">
                                 <ng-container *ngFor="let op of activeFormElement.options; let key = index;">
-                                    <label nz-checkbox [nzValue]="op.key"  [(ngModel)]="op.checked">
+                                    <label nz-checkbox [nzValue]="op.key" [(ngModel)]="op.checked">
                                         <input nz-input nzSize="'small'" [(ngModel)]="op.value"
                                             (click)="$event.stopPropagation();" />
                                         <span class="dynamic-option-delete" (click)="delOption(key)"><i
                                                 class="fa fa-minus-circle"></i></span>
                                     </label>
-
                                 </ng-container>
                             </nz-checkbox-wrapper>
                             <button nz-button nzType="dashed" style="width: 100%; margin-top: 10px;"

@@ -15,7 +15,8 @@
             <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}</nz-form-label>
             <nz-form-control [nzSpan]="16">
                 <nz-input-number [ngModel]="element.value" [required]="element.required" [name]="element.key"
-                    [id]="element.key"></nz-input-number>
+                    [id]="element.key" [nzMin]="element.min" [nzMax]="element.max" [nzStep]="element.step">
+                </nz-input-number>
             </nz-form-control>
         </nz-form-item>
         <span class="dynamic-delete-button"><i class="fa fa-minus-circle"></i></span>
@@ -62,12 +63,21 @@
 
     <div class="form-item" *ngSwitchCase="'select'">
         <nz-form-item>
-            <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}</nz-form-label>
+            <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}{{element.mode}}
+            </nz-form-label>
             <nz-form-control [nzSpan]="16">
-                <nz-select [ngModel]="element.value" [name]="element.key" [id]="element.key"
+                <nz-select *ngIf="element.mode === 'multiple';else elseBlock" [ngModel]="selectedList"
+                    [nzMode]="element.mode" [name]="element.key" [id]="element.key"
                     [nzPlaceHolder]="element.placeholder" nzAllowClear>
                     <nz-option [nzValue]="op.key" [nzLabel]="op.value" *ngFor="let op of element.options"></nz-option>
                 </nz-select>
+                <ng-template #elseBlock>
+                    <nz-select [ngModel]="element.value" [name]="element.key" [id]="element.key"
+                        [nzPlaceHolder]="element.placeholder" nzAllowClear>
+                        <nz-option [nzValue]="op.key" [nzLabel]="op.value" *ngFor="let op of element.options">
+                        </nz-option>
+                    </nz-select>
+                </ng-template>
             </nz-form-control>
         </nz-form-item>
         <span class="dynamic-delete-button"><i class="fa fa-minus-circle"></i></span>

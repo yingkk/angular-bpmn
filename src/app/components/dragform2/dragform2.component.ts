@@ -91,6 +91,7 @@ export class Dragform2Component implements OnInit {
       checked: val.includes(t.key)
     }));
     this.activeFormElement.value = val.toString();
+
   }
 
   handleDelElement(indexVal: number) {
@@ -105,9 +106,9 @@ export class Dragform2Component implements OnInit {
     const temp = this.activeFormElement.options.sort((a, b) => parseInt(a.key, 10) - parseInt(b.key, 10));
     const largeKeyStr = temp[temp.length - 1].key;
     const nextKey = parseInt(largeKeyStr, 10) + 1;
-    const typeName = this.activeFormElement.controlType === 'radio' ? 'Radio' : 'Label';
+    const typeName = this.activeFormElement.controlType === 'radio' ? 'Radio' : (this.activeFormElement.controlType === 'checkbox' ? 'Label' : 'Option');
     this.activeFormElement.options.push(
-      { key: nextKey + '', value: typeName + nextKey }
+      { key: nextKey + '', value: typeName + ' ' + nextKey }
     );
   }
 
@@ -186,6 +187,8 @@ export class Dragform2Component implements OnInit {
           label: '下拉选择框',
           placeholder: '请选择',
           required: false,
+          mode: 'multiple',
+          value: '',
           options: [
             { key: '1', value: 'Option 1' },
             { key: '2', value: 'Option 2' },
