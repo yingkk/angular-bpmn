@@ -55,6 +55,7 @@ export class Dragform2Component implements OnInit {
   ];
 
   activeFormElement: FormElementBase<string>;
+  activeFormElementIndex: number;
 
 
   ngOnInit() {
@@ -80,18 +81,22 @@ export class Dragform2Component implements OnInit {
     // e.dataTransfer.clearData();
   }
 
-  onActiceIndexChange(activeIndexVal: number) {
-    this.activeFormElement = this.elements[activeIndexVal];
+  onActiceIndexChange(activeIndex: number) {
+    this.activeFormElementIndex = activeIndex;
+    this.activeFormElement = this.elements[activeIndex];
   }
 
 
   onCheckBoxChange(val: string[]) {
+
     this.activeFormElement.options.forEach(t => ({
       ...t,
       checked: val.includes(t.key)
     }));
     this.activeFormElement.value = val.toString();
-
+    // update
+    this.elements.splice(this.activeFormElementIndex, 1, this.activeFormElement);
+    this.elements = JSON.parse(JSON.stringify(this.elements));
   }
 
   handleDelElement(indexVal: number) {

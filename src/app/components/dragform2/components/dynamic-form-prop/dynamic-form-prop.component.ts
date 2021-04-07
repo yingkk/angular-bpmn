@@ -1,7 +1,5 @@
-import { AfterContentChecked, AfterViewInit, Component, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { EventEmitter } from 'protractor';
-import { Observable } from 'rxjs';
 import { FormElementBase } from '../../init/FormElementBase';
 
 @Component({
@@ -14,19 +12,19 @@ import { FormElementBase } from '../../init/FormElementBase';
     '[style.width]': '"100%"'
   }
 })
-export class DynamicFormPropComponent implements OnInit {
+export class DynamicFormPropComponent implements OnInit, OnChanges {
   @Input() element: FormElementBase<string>;
   @Input() form: FormGroup;
-  // get selectedList(): string[] {
-  //   return this.element.value ? this.element.value.split(',') : [];
-  // }
   selectedList: string[] = [];
   get isValid() { return this.form.controls[this.element.key].valid; }
   constructor() { }
 
-  ngOnInit() {
-    // TODO  dragform2 component has changed current element property after this component init, and in this component cant deep sync
-    console.log(this.element)
-  }
+  ngOnInit() { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.element) {
+      const selectedStr = changes.element.currentValue.value;
+      this.selectedList = selectedStr.split(',');
+    }
+  }
 }
