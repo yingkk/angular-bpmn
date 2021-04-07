@@ -63,7 +63,7 @@
 
     <div class="form-item" *ngSwitchCase="'select'">
         <nz-form-item>
-            <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}{{element.mode}}
+            <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}
             </nz-form-label>
             <nz-form-control [nzSpan]="16">
                 <nz-select *ngIf="element.mode === 'multiple';else elseBlock" [ngModel]="selectedList"
