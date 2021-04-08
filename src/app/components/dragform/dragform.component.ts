@@ -132,6 +132,7 @@ export class DragformComponent implements OnInit {
           value: '',
           required: false,
           order: 1,
+         // type: 'password',
           placeholder: '请输入'
         });
         break;

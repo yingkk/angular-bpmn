@@ -3,7 +3,7 @@
         <nz-form-item>
             <nz-form-label [nzRequired]="element.required" [nzSpan]="5">{{element.label}}</nz-form-label>
             <nz-form-control [nzSpan]="16">
-                <input nz-input [ngModel]="element.value" [name]="element.key" [id]="element.key"
+                <input nz-input [ngModel]="element.value" [name]="element.key" [id]="element.key" [type]="element.type"
                     [required]="element.required" [placeholder]="element.placeholder" />
             </nz-form-control>
         </nz-form-item>

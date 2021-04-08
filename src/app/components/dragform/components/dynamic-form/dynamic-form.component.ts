@@ -29,8 +29,8 @@ export class DynamicFormComponent implements OnInit {
 
 
   ngOnInit() {
-    this.form = this.ecs.toFormGroup(this.elements);
-    console.log(this.form)
+    // this.form = this.ecs.toFormGroup(this.elements);
+    // console.log(this.form)
   }
 
   handleClick(indexVal: number, e) {

@@ -136,7 +136,7 @@ export class Bpmn2Component implements OnInit {
     this.initModeler();
     this.handleModeler();
     this.initOptions();
-    console.log(this.options)
+   // console.log(this.options)
   }
 
   initModeler() {
@@ -170,10 +170,10 @@ export class Bpmn2Component implements OnInit {
       //   message:"出发点击事件",
       //   type:"success"
       // })
-      // this.form = {
-      //   ...element.businessObject,
-      //   ...element.businessObject.$attrs
-      // };
+      this.form = {
+        ...element.businessObject,
+        ...element.businessObject.$attrs
+      };
       console.log(this.form)
       this.form.nodeUsers = [];
       // console.log(this.form);
@@ -286,7 +286,7 @@ export class Bpmn2Component implements OnInit {
   }
 
   handleUndo() {
-    this.modeler.get('commandStack').redo();
+    this.modeler.get('commandStack').undo();
   }
 
   handleRedo() {
