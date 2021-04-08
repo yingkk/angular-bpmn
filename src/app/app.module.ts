@@ -9,12 +9,10 @@ import { Bpmn2Component } from './components/bpmn2/bpmn2.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DragformComponent } from './components/dragform/dragform.component';
 import { Test2Component } from './pages/test2/test2.component';
-import { HtmlPipe } from './common/pipe/html.pipe';
-import { Dragform2Component } from './components/dragform2/dragform2.component';
-import { DynamicFormComponent } from './components/dragform2/components/dynamic-form/dynamic-form.component';
-import { DynamicFormPropComponent } from './components/dragform2/components/dynamic-form-prop/dynamic-form-prop.component';
+import { DragformComponent } from './components/dragform/dragform.component';
+import { DynamicFormComponent } from './components/dragform/components/dynamic-form/dynamic-form.component';
+import { DynamicFormPropComponent } from './components/dragform/components/dynamic-form-prop/dynamic-form-prop.component';
 
 
 @NgModule({
@@ -23,10 +21,8 @@ import { DynamicFormPropComponent } from './components/dragform2/components/dyna
     BpmnComponent,
     TestComponent,
     Bpmn2Component,
-    DragformComponent,
     Test2Component,
-    HtmlPipe,
-    Dragform2Component,
+    DragformComponent,
     DynamicFormComponent,
     DynamicFormPropComponent,
   ],

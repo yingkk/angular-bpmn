@@ -1,0 +1,9 @@
+<form nz-form (ngSubmit)="onSubmit()">
+    <ng-container *ngFor="let element of elements; let key = index">
+        <app-dynamic-form-prop [element]="element" [form]="form" (click)="handleClick(key, $event)"
+            [ngClass]="[activeIndex === key ? 'active': '']"></app-dynamic-form-prop>
+    </ng-container>
+</form>
+<!-- <div class="form-row">
+    <button type="submit" [disabled]="!form.valid">Save</button>
+</div> -->

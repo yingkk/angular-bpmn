@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DragformComponent } from './dragform.component';
+import { Dragform2Component } from './dragform.component';
 
 describe('DragformComponent', () => {
-  let component: DragformComponent;
-  let fixture: ComponentFixture<DragformComponent>;
+  let component: Dragform2Component;
+  let fixture: ComponentFixture<Dragform2Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DragformComponent ]
+      declarations: [ Dragform2Component ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DragformComponent);
+    fixture = TestBed.createComponent(Dragform2Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -23,11 +23,14 @@ export class DynamicFormComponent implements OnInit {
   @Output() outActiveIndex = new EventEmitter<number>();
   @Output() outDelIndex = new EventEmitter<number>();
   form: FormGroup;
-
   activeIndex: number;
+
+  payLoad = '';
+
 
   ngOnInit() {
     this.form = this.ecs.toFormGroup(this.elements);
+    console.log(this.form)
   }
 
   handleClick(indexVal: number, e) {
@@ -40,6 +43,15 @@ export class DynamicFormComponent implements OnInit {
       this.activeIndex = indexVal;
       this.outActiveIndex.emit(this.activeIndex);
     }
+  }
+
+  onSubmit() {
+    const formPayLoad = this.elements.reduce((init, cur, index) => {
+      init[cur.key] = cur.value;
+      return init;
+    }, {});
+    console.log(formPayLoad)
+    // this.payLoad = JSON.stringify(this.form.getRawValue());
   }
 
 }

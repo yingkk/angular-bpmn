@@ -39,15 +39,31 @@
     .form-title {
       width: 100%;
       height: 38px;
+      line-height: 38px;
       font-size: 24px;
       font-weight: 700;
       text-align: center;
       flex: none;
+      input {
+        border: none;
+        width: 120px;
+        outline: none;
+      }
+      .title-edit-icon {
+        cursor: pointer;
+      }
+      .title-edit-icon:hover {
+        color: #1890ff;
+      }
     }
     .form-container {
       width: 100%;
       height: 100%;
       padding: 16px;
+      app-dynamic-form {
+        width: 100%;
+        height: 100%;
+      }
       form {
         width: 100%;
         height: 100%;
@@ -58,7 +74,6 @@
     order: 3;
     width: 280px;
     height: 100%;
-    overflow-y: auto;
     padding: 20px;
     box-sizing: border-box;
     background-color: #fff;
@@ -72,6 +87,68 @@
     .setting-container {
       width: 100%;
       height: 100%;
+      padding-top: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      .prop-item {
+        width: 100%;
+        .ant-radio-group {
+          .ant-radio-wrapper:not(:first-child) {
+            margin-top: 5px;
+          }
+          .ant-input {
+            width: 88%;
+          }
+        }
+        .ant-checkbox-group {
+          .ant-checkbox-wrapper {
+            margin: 0;
+            white-space: nowrap;
+          }
+
+          .ant-checkbox-wrapper:not(:first-child) {
+            margin-top: 5px;
+          }
+          .ant-input {
+            width: 88%;
+          }
+        }
+        .checkbox-item {
+          display: flex;
+          justify-content: space-between;
+        }
+        .checkbox-item:not(:first-child) {
+          margin-top: 5px;
+        }
+
+        .prop-item-title {
+          display: block;
+          font-size: 14px;
+          font-weight: 700;
+          margin-bottom: 2px;
+        }
+        .dynamic-option-delete {
+          margin-left: 5px;
+        }
+
+        .dynamic-option-delete:hover {
+          color: #ff4d4f;
+        }
+        // .ant-radio-group {
+        //     width: 80%;
+        // }
+        // [nz-radio-group] {
+        //   width: 80%;
+        // }
+        // .option-item {
+        //   .dynamic-option-delete {
+        //     width: 20%;
+        //   }
+        // }
+      }
+      .prop-item:not(:first-child) {
+        margin-top: 16px;
+      }
     }
   }
 }
