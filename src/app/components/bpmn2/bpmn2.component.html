@@ -32,6 +32,13 @@
                     </nz-select>
                 </nz-form-control>
             </nz-form-item>
+            <nz-form-item *ngIf="element?.type === 'bpmn:SequenceFlow'">
+                <nz-form-label>判断条件</nz-form-label>
+                <nz-form-control>
+                    <textarea name="condition" cols="30" rows="4"></textarea>
+                </nz-form-control>
+            </nz-form-item>
+
         </form>
     </div>
     <div class="toolbar">

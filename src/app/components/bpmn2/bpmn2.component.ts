@@ -129,14 +129,14 @@ export class Bpmn2Component implements OnInit {
   radioValue = 'deptId';
 
 
-  private readonly newDiagram = 'assets/bpmn/init.bpmn';
+  private readonly defaultDiagram = 'assets/bpmn/init.bpmn';
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.initModeler();
     this.handleModeler();
     this.initOptions();
-   // console.log(this.options)
+    // console.log(this.options)
   }
 
   initModeler() {
@@ -157,7 +157,7 @@ export class Bpmn2Component implements OnInit {
     // 默认初始化
     // this.modeler.createDiagram();
     // 自定义初始化
-    this.load(this.newDiagram);
+    this.load(this.defaultDiagram);
   }
 
   handleModeler() {
@@ -176,7 +176,6 @@ export class Bpmn2Component implements OnInit {
       };
       console.log(this.form)
       this.form.nodeUsers = [];
-      // console.log(this.form);
     });
     this.nodePropChange();
   }
@@ -258,6 +257,7 @@ export class Bpmn2Component implements OnInit {
       if (err) {
         console.error(err);
       } else {
+        console.log(xml)
         this.setEncoded(xml, 'bpmn.xml');
       }
     });
